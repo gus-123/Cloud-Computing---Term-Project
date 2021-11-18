@@ -1,4 +1,5 @@
 import boto3
+from botocore.exceptions import ClientError
 
 access_key = "key"   
 secret_key = "key"   
@@ -18,6 +19,8 @@ def AWS_VM(num):
     ## Available Zones ##
     elif num == 2:
         print('[AWS EC2 Available Zones]')
+        response = ec2.describe_availability_zones()
+        print('Availability Zones : ', response['AvailabilityZones'])
     
     
     ## Start Instance ##
@@ -28,6 +31,8 @@ def AWS_VM(num):
     ## Available Regions ##
     elif num == 4:
         print('[AWS EC2 Available Regions]')
+        response = ec2.describe_regions()
+        print('Available Regions : ', response['Regions'])
 
 
     ## Stop Instance ##
@@ -53,7 +58,6 @@ def AWS_VM(num):
         
 
 
- 
 def main():
     
     
@@ -65,7 +69,7 @@ def main():
     print("  7. reboot instance              8. list images            "); 
     print("                                 99. quit                   ");
     print("                                                            ");
-    print("                      Created By kIM Hyun-Min on 2021.11.13 ");
+    print("                      Created By kIM Hyun-Min on 2021.11.18 ");
     print("------------------------------------------------------------");
     print()
     while True:
