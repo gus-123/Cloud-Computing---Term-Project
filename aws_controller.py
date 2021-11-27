@@ -14,6 +14,11 @@ def AWS_VM(num):
     ## List Instances ##
     if num == 1:
         print('[AWS EC2 List Instances]')
+        VmList = ec2.instances.all()
+        count_vm = 1
+        for instance in VmList:
+            print("[{0}] id=({1}), type=({2}), state=({3})".format(str(count_vm), instance.id, instance.instance_type, instance.state['Name']))
+            count_vm += 1
 
     
     ## Available Zones ##
