@@ -56,6 +56,18 @@ def AWS_VM(num):
     ## Stop Instance ##
     elif num == 5:
         print('[AWS EC2 Stop Instance]')
+        VmList = ec2.instances.all()
+        stopIds = []
+        for instance in VmList:
+            if 'running' == instance.state['Name']:
+                stopIds.append(instance.id)
+ 
+        if len(stopIds) > 0:
+            stopList  = ec2.instances.filter(InstanceIds=stopIds).stop()
+            for stopInstance in stopList:
+                print('ID=({0}) is STOP'.format(stopInstance['StoppingInstances'][0]['InstanceId']))
+        else:
+            print("No instances to stop.")
     
     
     ## Create Instance ##
