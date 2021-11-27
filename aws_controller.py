@@ -37,6 +37,13 @@ def AWS_VM(num):
         for instance in VmList:
             if 'stopped' == instance.state['Name']:
                 startIds.append(instance.id)
+        
+        if len(startIds) > 0:
+            startList  = ec2.instances.filter(InstanceIds=startIds).start()
+            for startInstance in startList:
+                print('ID=({0}) is START'.format(startInstance['StartingInstances'][0]['InstanceId']))
+        else:
+            print("No instances to start.")
 
  
     ## Available Regions ##
