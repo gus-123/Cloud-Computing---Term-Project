@@ -94,7 +94,7 @@ def AWS_VM(num):
     
     ## list Images ##
     elif num == 8:
-        print('[AWS EC2 list Instance]')
+        print('[AWS EC2 List Images]')
         
         
         
