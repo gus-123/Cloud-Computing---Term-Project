@@ -78,6 +78,18 @@ def AWS_VM(num):
     ## Reboot Instance ##
     elif num == 7:
         print('[AWS EC2 Reboot Instance]')
+        VmList = ec2.instances.all()
+        rebootIds = []
+        for instance in VmList:
+            if 'running' == instance.state['Name']:
+                rebootIds.append(instance.id)
+ 
+        if len(rebootIds) > 0:
+            rebootList  = ec2.instances.filter(InstanceIds=rebootIds).reboot()
+            for rebootInstance in rebootList:
+                print('ID=({0}) is REBOOT'.format(rebootInstance['rebootingInstances'][0]['InstanceId']))
+        else:
+            print("No instances to reboot.")
         
     
     ## list Images ##
