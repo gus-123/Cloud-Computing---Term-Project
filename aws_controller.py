@@ -152,8 +152,5 @@ def main():
         # ----- quit ----- 
         if '99' == InputGet :
             break
-            
-        else :
-            print('Wrong Integer.')
 
 main()
