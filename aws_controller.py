@@ -111,7 +111,7 @@ def main():
     print("  7. reboot instance              8. list images            "); 
     print("                                 99. quit                   ");
     print("                                                            ");
-    print("                      Created By kIM Hyun-Min on 2021.11.18 ");
+    print("                      Created By kIM Hyun-Min on 2021.12.03 ");
     print("------------------------------------------------------------");
     print()
     while True:
